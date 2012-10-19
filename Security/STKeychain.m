@@ -341,13 +341,15 @@ static NSString *STKeychainErrorDomain = @"STKeychainErrorDomain";
 			NSArray *keys = [[[NSArray alloc] initWithObjects:(NSString *)kSecClass, 
                               kSecAttrService, 
                               kSecAttrLabel, 
-                              kSecAttrAccount, 
+                              kSecAttrAccount,
+                              kSecAttrAccessible,
                               nil] autorelease];
 			
 			NSArray *objects = [[[NSArray alloc] initWithObjects:(NSString *)kSecClassGenericPassword, 
                                  serviceName,
                                  serviceName,
                                  username,
+                                 kSecAttrAccessibleAfterFirstUnlock,
                                  nil] autorelease];
 			
 			NSDictionary *query = [[[NSDictionary alloc] initWithObjects:objects forKeys:keys] autorelease];			
@@ -362,7 +364,8 @@ static NSString *STKeychainErrorDomain = @"STKeychainErrorDomain";
 		NSArray *keys = [[[NSArray alloc] initWithObjects:(NSString *)kSecClass, 
                           kSecAttrService, 
                           kSecAttrLabel, 
-                          kSecAttrAccount, 
+                          kSecAttrAccount,
+                          kSecAttrAccessible,
                           kSecValueData, 
                           nil] autorelease];
 		
@@ -370,6 +373,7 @@ static NSString *STKeychainErrorDomain = @"STKeychainErrorDomain";
                              serviceName,
                              serviceName,
                              username,
+                             kSecAttrAccessibleAfterFirstUnlock,
                              [password dataUsingEncoding:NSUTF8StringEncoding],
                              nil] autorelease];
 		
